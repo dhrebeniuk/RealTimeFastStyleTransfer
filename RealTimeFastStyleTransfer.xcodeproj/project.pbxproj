@@ -29,6 +29,7 @@
 		EBC13A032460784C00D2F364 /* CVPixelBufferExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC139FB2460784C00D2F364 /* CVPixelBufferExtensions.swift */; };
 		EBC13A072460786E00D2F364 /* YUVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC13A052460786E00D2F364 /* YUVImporter.swift */; };
 		EBC13A082460786E00D2F364 /* YUVImporterShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBC13A062460786E00D2F364 /* YUVImporterShaders.metal */; };
+		EBD1AE792472DEF400D0641F /* Convolution2dDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AE782472DEF400D0641F /* Convolution2dDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		EBC139FB2460784C00D2F364 /* CVPixelBufferExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVPixelBufferExtensions.swift; sourceTree = "<group>"; };
 		EBC13A052460786E00D2F364 /* YUVImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUVImporter.swift; sourceTree = "<group>"; };
 		EBC13A062460786E00D2F364 /* YUVImporterShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = YUVImporterShaders.metal; sourceTree = "<group>"; };
+		EBD1AE782472DEF400D0641F /* Convolution2dDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convolution2dDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 		EBC13A0A246085CA00D2F364 /* StyleTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				EBD1AE782472DEF400D0641F /* Convolution2dDataSource.swift */,
 			);
 			path = StyleTransfer;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC139F12460778E00D2F364 /* CameraRendererViewController.swift in Sources */,
+				EBD1AE792472DEF400D0641F /* Convolution2dDataSource.swift in Sources */,
 				EBC13A082460786E00D2F364 /* YUVImporterShaders.metal in Sources */,
 				EBC139FF2460784C00D2F364 /* MTLDeviceExtensions.swift in Sources */,
 				EBC139E5245F9A6F00D2F364 /* VideoCapturerConfiguration.swift in Sources */,
