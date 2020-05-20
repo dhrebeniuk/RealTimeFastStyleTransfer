@@ -30,6 +30,12 @@
 		EBC13A072460786E00D2F364 /* YUVImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC13A052460786E00D2F364 /* YUVImporter.swift */; };
 		EBC13A082460786E00D2F364 /* YUVImporterShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBC13A062460786E00D2F364 /* YUVImporterShaders.metal */; };
 		EBD1AE792472DEF400D0641F /* Convolution2dDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AE782472DEF400D0641F /* Convolution2dDataSource.swift */; };
+		EBD1AE9524754ED600D0641F /* Instance2DNormalizationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AE9424754ED600D0641F /* Instance2DNormalizationDataSource.swift */; };
+		EBD1AE9724754F4100D0641F /* ResidualDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AE9624754F4100D0641F /* ResidualDataSource.swift */; };
+		EBD1AE9A24754FBF00D0641F /* ScalarMultiply.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AE9824754FBF00D0641F /* ScalarMultiply.metal */; };
+		EBD1AEA024754FDA00D0641F /* CocantenateKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AE9D24754FDA00D0641F /* CocantenateKernel.swift */; };
+		EBD1AEA124754FDA00D0641F /* Cocantenate.metal in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AE9E24754FDA00D0641F /* Cocantenate.metal */; };
+		EBD1AEA42475504800D0641F /* ScalarMultiplyKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1AEA32475504800D0641F /* ScalarMultiplyKernel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +64,12 @@
 		EBC13A052460786E00D2F364 /* YUVImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YUVImporter.swift; sourceTree = "<group>"; };
 		EBC13A062460786E00D2F364 /* YUVImporterShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = YUVImporterShaders.metal; sourceTree = "<group>"; };
 		EBD1AE782472DEF400D0641F /* Convolution2dDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convolution2dDataSource.swift; sourceTree = "<group>"; };
+		EBD1AE9424754ED600D0641F /* Instance2DNormalizationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance2DNormalizationDataSource.swift; sourceTree = "<group>"; };
+		EBD1AE9624754F4100D0641F /* ResidualDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidualDataSource.swift; sourceTree = "<group>"; };
+		EBD1AE9824754FBF00D0641F /* ScalarMultiply.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ScalarMultiply.metal; sourceTree = "<group>"; };
+		EBD1AE9D24754FDA00D0641F /* CocantenateKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocantenateKernel.swift; sourceTree = "<group>"; };
+		EBD1AE9E24754FDA00D0641F /* Cocantenate.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Cocantenate.metal; sourceTree = "<group>"; };
+		EBD1AEA32475504800D0641F /* ScalarMultiplyKernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalarMultiplyKernel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +155,7 @@
 		EBC139ED2460251500D2F364 /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				EBD1AEA224754FF100D0641F /* MetalPerformaceShadersKernels */,
 				EBC13A042460785C00D2F364 /* Filters */,
 				EBC139FB2460784C00D2F364 /* CVPixelBufferExtensions.swift */,
 				EBC139FA2460784C00D2F364 /* CVPixelBufferPoolExtensions.swift */,
@@ -175,9 +188,6 @@
 		EBC13A042460785C00D2F364 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				EBC13A0D246085FD00D2F364 /* Cocantenate */,
-				EBC13A0C246085F300D2F364 /* Upscale */,
-				EBC13A0B246085E300D2F364 /* ScalarMultiplyFilter */,
 				EBC13A0A246085CA00D2F364 /* StyleTransfer */,
 				EBC13A09246085BE00D2F364 /* YUVImporter */,
 			);
@@ -196,30 +206,46 @@
 		EBC13A0A246085CA00D2F364 /* StyleTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				EBD1AEA5247551EA00D0641F /* Weights */,
 				EBD1AE782472DEF400D0641F /* Convolution2dDataSource.swift */,
+				EBD1AE9424754ED600D0641F /* Instance2DNormalizationDataSource.swift */,
+				EBD1AE9624754F4100D0641F /* ResidualDataSource.swift */,
 			);
 			path = StyleTransfer;
 			sourceTree = "<group>";
 		};
-		EBC13A0B246085E300D2F364 /* ScalarMultiplyFilter */ = {
+		EBC13A0B246085E300D2F364 /* ScalarMultiply */ = {
 			isa = PBXGroup;
 			children = (
+				EBD1AE9824754FBF00D0641F /* ScalarMultiply.metal */,
+				EBD1AEA32475504800D0641F /* ScalarMultiplyKernel.swift */,
 			);
-			path = ScalarMultiplyFilter;
-			sourceTree = "<group>";
-		};
-		EBC13A0C246085F300D2F364 /* Upscale */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Upscale;
+			path = ScalarMultiply;
 			sourceTree = "<group>";
 		};
 		EBC13A0D246085FD00D2F364 /* Cocantenate */ = {
 			isa = PBXGroup;
 			children = (
+				EBD1AE9E24754FDA00D0641F /* Cocantenate.metal */,
+				EBD1AE9D24754FDA00D0641F /* CocantenateKernel.swift */,
 			);
 			path = Cocantenate;
+			sourceTree = "<group>";
+		};
+		EBD1AEA224754FF100D0641F /* MetalPerformaceShadersKernels */ = {
+			isa = PBXGroup;
+			children = (
+				EBC13A0B246085E300D2F364 /* ScalarMultiply */,
+				EBC13A0D246085FD00D2F364 /* Cocantenate */,
+			);
+			path = MetalPerformaceShadersKernels;
+			sourceTree = "<group>";
+		};
+		EBD1AEA5247551EA00D0641F /* Weights */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Weights;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD1AE9524754ED600D0641F /* Instance2DNormalizationDataSource.swift in Sources */,
 				EBC139F12460778E00D2F364 /* CameraRendererViewController.swift in Sources */,
 				EBD1AE792472DEF400D0641F /* Convolution2dDataSource.swift in Sources */,
 				EBC13A082460786E00D2F364 /* YUVImporterShaders.metal in Sources */,
@@ -301,16 +328,21 @@
 				EBC139EB245F9A7900D2F364 /* CGContextExtensions.swift in Sources */,
 				EBC13A032460784C00D2F364 /* CVPixelBufferExtensions.swift in Sources */,
 				EBC139FD2460784C00D2F364 /* TextureRendererStorage.swift in Sources */,
+				EBD1AEA124754FDA00D0641F /* Cocantenate.metal in Sources */,
 				EBC13A012460784C00D2F364 /* RenderShaders.metal in Sources */,
+				EBD1AE9A24754FBF00D0641F /* ScalarMultiply.metal in Sources */,
 				EBC139FC2460784C00D2F364 /* SamplesRenderer.swift in Sources */,
+				EBD1AE9724754F4100D0641F /* ResidualDataSource.swift in Sources */,
 				EBC139E4245F9A6F00D2F364 /* VideoSampler.swift in Sources */,
 				EBC139FE2460784C00D2F364 /* SamplesImporter.swift in Sources */,
 				EBC139C6245F9A2500D2F364 /* AppDelegate.swift in Sources */,
+				EBD1AEA024754FDA00D0641F /* CocantenateKernel.swift in Sources */,
 				EBC139C8245F9A2500D2F364 /* SceneDelegate.swift in Sources */,
 				EBC139E3245F9A6F00D2F364 /* VideoCapturer.swift in Sources */,
 				EBC139F3246077D800D2F364 /* CameraRendererPresenter.swift in Sources */,
 				EBC13A002460784C00D2F364 /* TextureCacheManager.swift in Sources */,
 				EBC139E7245F9A6F00D2F364 /* PhotoCapturer.swift in Sources */,
+				EBD1AEA42475504800D0641F /* ScalarMultiplyKernel.swift in Sources */,
 				EBC13A022460784C00D2F364 /* CVPixelBufferPoolExtensions.swift in Sources */,
 				EBC13A072460786E00D2F364 /* YUVImporter.swift in Sources */,
 			);
