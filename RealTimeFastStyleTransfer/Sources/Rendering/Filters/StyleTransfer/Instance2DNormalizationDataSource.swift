@@ -24,7 +24,6 @@ class Instance2DNormalizationDataSource: NSObject, MPSCNNInstanceNormalizationDa
         betaData = Bundle.main.url(forResource: "\(name)_beta", withExtension: "bin").flatMap { try? Data(contentsOf: $0) }
     }
     
-    
     func load() -> Bool {
         return true
     }

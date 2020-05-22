@@ -24,9 +24,10 @@ open class ScalarMultiplyKernel {
     private var scalarMultiplyComputePipelineState: MTLComputePipelineState?
     private var arrayScalarMultiplyComputePipelineState: MTLComputePipelineState?
 
-    public init(device: MTLDevice) {
+    public init(device: MTLDevice, multiply: Float) {
         self.device = device
-    
+        self.multiply = multiply
+        
         let defaultLibrary = device.makeDefaultLibrary()
         if let computeShader = defaultLibrary?.makeFunction(name: "scalar_multiply_kernel") {
             if let computePipelineState = try? self.device.makeComputePipelineState(function: computeShader) {

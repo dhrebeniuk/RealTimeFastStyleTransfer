@@ -20,14 +20,16 @@ protocol SamplesImporter {
 
 class SamplesMetalImporter: SamplesImporter {
 
-	private var device: MTLDevice? = MTLCreateSystemDefaultDevice()
-	private var commandQueue: MTLCommandQueue?
+	private let device: MTLDevice?
+	private let commandQueue: MTLCommandQueue?
 	private let yuvImporter: YUVImporter
+    private let styleTransferFilter: StyleTransferFilter
     
 	init(device: MTLDevice?, commandQueue: MTLCommandQueue?) {
 		self.device = device
 		self.commandQueue = commandQueue
 		self.yuvImporter = YUVImporterMetal(device: device)
+        self.styleTransferFilter = StyleTransferFilter(device: device)
 	}
 	
 	func setup() {
@@ -40,7 +42,7 @@ class SamplesMetalImporter: SamplesImporter {
 		if let commandBuffer = self.commandQueue?.makeCommandBuffer() {
 			let texture = self.yuvImporter.performImport(imageBuffer: imageBuffer, in: commandBuffer)
 			
-			resultTexture = self.applyFilters(for: texture, imageBuffer: imageBuffer, in: commandBuffer)
+			resultTexture = texture.flatMap { styleTransferFilter.applyEffect(inputTexture: $0, in: commandBuffer) }  ?? texture
 			
 			commandBuffer.commit()
 			
@@ -51,14 +53,7 @@ class SamplesMetalImporter: SamplesImporter {
 
 		return resultTexture
 	}
-	
-	private func applyFilters(for texture: MTLTexture?, imageBuffer: CVPixelBuffer?, in commandBuffer: MTLCommandBuffer?) -> MTLTexture? {
-        
-        // TODO: Need implement
-		
-		return texture
-	}
-	
+    
 	func fetch(sampleBuffer: CMSampleBuffer) -> MTLTexture?  {
 		guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
 			return nil

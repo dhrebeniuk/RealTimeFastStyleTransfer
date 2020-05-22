@@ -18,10 +18,10 @@ class ResDataSource {
     let in2Data: Instance2DNormalizationDataSource
     
     init(name: String, channels: Int, kernelSize: Int = 3, stride: Int = 1) {
-        conv1Data = Convolution2dDataSource("\(name)_conv1", kernelSize, kernelSize, channels, channels, stride, stride)
+        conv1Data = Convolution2dDataSource("\(name)_conv1_weight", kernelSize, kernelSize, channels, channels, stride, stride)
         in1Data = Instance2DNormalizationDataSource("\(name)_in1", channels)
         
-        conv2Data = Convolution2dDataSource("\(name)_conv2", 3, 3, channels, channels, 1, 1)
+        conv2Data = Convolution2dDataSource("\(name)_conv2_weight", 3, 3, channels, channels, 1, 1)
         in2Data = Instance2DNormalizationDataSource("\(name)_in2", channels)
     }
 }
