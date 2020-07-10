@@ -84,11 +84,15 @@ class VideoCapturer {
 			self.session.removeInput(self.currentCaptureInput!)
 		}
 		
-		let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: cameraPosition)
+        	let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInTelephotoCamera], mediaType: AVMediaType.video, position: cameraPosition)
 		
-		_ = try? discoverySession.devices.filter { device -> Bool in
-			return device.position == cameraPosition }.first.map() { captureDevice in
-				
+        	var device = discoverySession.devices.filter { device -> Bool in device.position == cameraPosition }.first
+        
+        	if device == nil {
+            		device = AVCaptureDevice.default(for: .video)
+        	}
+        
+		_ = try? device.map() { captureDevice in
 				self.configureVideoCaptureDevice(captureDevice)
 				
 				let videoInput = try AVCaptureDeviceInput(device: captureDevice)
